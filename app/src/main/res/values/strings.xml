@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MovieDB</string>
+    <string name="search_about_actors">Search about actors here</string>
+    <string name="error_server">Check your internet connexion</string>
+    <string name="for_you">For you</string>
+    <string name="loading_subtitles">Loading subtitles ... </string>
+    <string name = "message_double_klik_to_close">Klik sekali lagi untuk keluar</string>
+    <string name="live_tv">Live TV</string>
+    <string name="series">Series</string>
+    <string name="movies">Movies</string>
+    <string name="menu_dashboard">Home</string>
+    <string name="try_again">Try Again</string>
+
+</resources>

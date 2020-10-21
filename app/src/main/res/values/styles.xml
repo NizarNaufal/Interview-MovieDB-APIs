@@ -1,0 +1,39 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name = "CustomToolbar" parent = "@style/Widget.AppCompat.Toolbar">
+        <item name = "android:theme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name = "popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name = "android:fontFamily">@font/roboto_regular</item>
+        <item name = "contentInsetStart">0dp</item>
+        <item name = "contentInsetLeft">0dp</item>
+        <item name = "contentInsetStartWithNavigation">0dp</item>
+    </style>
+
+    <style name="CustomActionBar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="MiniControllerTextAppearace" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+    <style name="mySpinnerItemStyle" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="colorAccent">#f9a825</item>
+        <item name="android:colorControlNormal">#ffffff</item>
+    </style>
+    <style name = "AppTheme.NoActionBar">
+        <item name = "windowNoTitle">true</item>
+        <item name = "windowActionBar">false</item>
+    </style>
+</resources>
