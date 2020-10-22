@@ -1,13 +1,12 @@
-package id.interview.moviedb.view.movies.modules;
+package id.interview.moviedb.view.home.modules;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+
 import androidx.annotation.LayoutRes;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -20,18 +19,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.List;
 
 import id.interview.moviedb.R;
-import id.interview.moviedb.support.SupportObject;
-import id.interview.moviedb.support.UtilsKt;
-import id.interview.moviedb.view.movies.ActivityDetailsMovies;
+import id.interview.moviedb.view.listcategory.ActivityDetailsMovies;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     public final List<MoviesModels> movies;
     private final LayoutInflater layoutInflater;
     private final int rowLayout;
     private final Context mContext;
 
-    public MoviesAdapter(Context context, LayoutInflater layoutInflater, List<MoviesModels> movies, @LayoutRes int rowLayout) {
+    public NewsAdapter(Context context, LayoutInflater layoutInflater, List<MoviesModels> movies, @LayoutRes int rowLayout) {
         mContext = context;
         this.movies = movies;
         this.layoutInflater = layoutInflater;
@@ -39,18 +36,17 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     }
 
     @Override
-    public MoviesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = layoutInflater.inflate(rowLayout, parent, false);
-        return new MoviesAdapter.ViewHolder(v);
+        return new ViewHolder(v);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(MoviesAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         MoviesModels movies_tayang = movies.get(position);
         holder.nama_product.setText(movies_tayang.getTitle_news());
-        holder.date_news.setText(SupportObject.INSTANCE.parseTimeUTC(movies.get(position).getPublishedAt(),
-                "yyyy-MM-dd HH:mm:ss", "EEEE, dd MMMM yyyy"));
+        holder.date_news.setText(movies_tayang.getPublishedAt());
 
         Glide.with(mContext)
                 .load( movies_tayang.getUrl_to_image())

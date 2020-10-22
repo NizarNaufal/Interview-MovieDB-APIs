@@ -7,8 +7,8 @@
     <string name = "message_double_klik_to_close">Klik sekali lagi untuk keluar</string>
     <string name="live_tv">Live TV</string>
     <string name="series">Series</string>
-    <string name="movies">Movies</string>
-    <string name="menu_dashboard">Home</string>
+    <string name="movies">Category</string>
+    <string name="menu_dashboard">Trending</string>
     <string name="try_again">Try Again</string>
     <string name="FEATURED">featured</string>
 

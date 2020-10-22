@@ -1,4 +1,4 @@
-package id.interview.moviedb.view.movies.modules
+package id.interview.moviedb.view.home.modules
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

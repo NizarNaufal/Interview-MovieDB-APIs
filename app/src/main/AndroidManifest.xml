@@ -28,7 +28,43 @@
             tools:ignore="LockedOrientationActivity"/>
 
         <activity
-            android:name = ".view.movies.ActivityDetailsMovies"
+            android:name = ".view.listcategory.ActivityDetailsMovies"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+
+        <activity
+            android:name = ".view.listcategory.technology.TechnologyActivity"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name = ".view.listcategory.entertainment.EntertainmentActivity"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name = ".view.listcategory.sports.SportsActivity"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name = ".view.listcategory.science.ScienceActivity"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name = ".view.listcategory.general.GeneralActivity"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name = ".view.listcategory.health.HealthActivity"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name = ".view.listcategory.business.BusinessActivity"
             android:screenOrientation = "portrait"
             android:theme = "@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity"/>

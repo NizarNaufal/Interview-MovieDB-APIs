@@ -11,15 +11,14 @@ import id.interview.moviedb.repository.NetworkingState
 import id.interview.moviedb.repository.ViewNetworkState
 import id.interview.moviedb.repository.base.BaseFragment
 import id.interview.moviedb.support.*
-import id.interview.moviedb.view.movies.modules.MoviesAdapter
-import id.interview.moviedb.view.movies.modules.MoviesModels
-import id.interview.moviedb.view.movies.support.MoviesPresenter
+import id.interview.moviedb.view.home.modules.NewsAdapter
+import id.interview.moviedb.view.home.modules.MoviesModels
+import id.interview.moviedb.view.home.support.NewsPresenter
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_movies.*
 
 class FragmentHome : BaseFragment(), ViewNetworkState, IView {
 
-    private val presenter by lazy { context?.let { MoviesPresenter(it, this) } }
+    private val presenter by lazy { context?.let { NewsPresenter(it, this) } }
     private var isRefresh = false
     private var products = mutableListOf<MoviesModels>()
     private var country = "us"
@@ -46,7 +45,7 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
         activity?.runOnUiThread {
             when (key) {
                 presenter?.moviesParam -> {
-                    recycler_view_movies_fragment_ku?.apply { if (status) gone() else visible() }
+                    recycler_view?.apply { if (status) gone() else visible() }
                 }
             }
         }
@@ -73,7 +72,7 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
     }
     override fun initView() {
         requestEvent()
-        swipe_refresh_layout_movies_fragment?.apply {
+        swipe_refresh_news?.apply {
             setColorSchemeResources(R.color.red, R.color.yellow, R.color.colorRed)
             setOnRefreshListener {
                 hide()
@@ -89,7 +88,7 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
     }
 
     private fun initList(dataList: ArrayList<MoviesModels>) {
-        val adapterProduct = MoviesAdapter(
+        val adapterProduct = NewsAdapter(
             context, layoutInflater, dataList, R.layout.item_poster
         )
        recycler_view?.apply {

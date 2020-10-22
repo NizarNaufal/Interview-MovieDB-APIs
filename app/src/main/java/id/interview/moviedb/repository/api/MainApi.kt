@@ -21,4 +21,11 @@ interface MainApi {
         @Query("apiKey") apiKey: String?
     ): Call<String>
 
+    @Headers("Content-Type: application/json", "Accept: application/json")
+    @GET("/v2/top-headlines")
+    fun getListCategory(
+        @Query("country") country: String?,
+        @Query("category") category:String?,
+        @Query("apiKey") apiKey: String?
+    ): Call<String>
 }

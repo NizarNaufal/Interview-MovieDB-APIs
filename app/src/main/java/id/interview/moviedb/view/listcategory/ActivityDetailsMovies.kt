@@ -1,18 +1,11 @@
-package id.interview.moviedb.view.movies
+package id.interview.moviedb.view.listcategory
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import id.interview.moviedb.R
 import id.interview.moviedb.repository.IView
 import id.interview.moviedb.repository.ViewNetworkState
 import id.interview.moviedb.repository.base.BaseActivity
-import id.interview.moviedb.support.baseUrl
-import id.interview.moviedb.view.movies.modules.MoviesModels
-import id.interview.moviedb.view.movies.support.MoviesPresenter
-import kotlinx.android.synthetic.main.activity_movie.*
+import id.interview.moviedb.view.home.modules.MoviesModels
 import id.interview.moviedb.support.*
 import kotlinx.android.synthetic.main.include_news_details_content.*
 
