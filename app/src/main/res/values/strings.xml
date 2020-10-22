@@ -10,5 +10,6 @@
     <string name="movies">Movies</string>
     <string name="menu_dashboard">Home</string>
     <string name="try_again">Try Again</string>
+    <string name="FEATURED">featured</string>
 
 </resources>

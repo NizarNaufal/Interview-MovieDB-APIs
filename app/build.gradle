@@ -29,6 +29,8 @@ android {
     buildTypes.each {
         it.buildConfigField 'String', 'BASE_URL_DEBUG', urlDebug
         it.buildConfigField 'String', 'BASE_URL_RELEASE', urlRelease
+        it.buildConfigField 'String', 'NEWS_API_TOKEN', NewsApiToken
+
     }
 
     androidExtensions {
@@ -78,10 +80,13 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'saschpe.android:customtabs:2.0.0'
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0-M1'
     implementation 'com.google.android.gms:play-services-cast:18.1.0'
     implementation 'com.google.android.gms:play-services-cast-framework:18.1.0'
     implementation 'com.github.greenfrvr:rubber-loader:1.1.2@aar'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'com.balysv:material-ripple:1.0.2'
+    implementation 'com.google.android:flexbox:0.3.2'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

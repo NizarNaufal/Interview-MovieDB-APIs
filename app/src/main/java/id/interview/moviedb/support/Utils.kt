@@ -23,15 +23,24 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import id.interview.moviedb.BuildConfig
 import id.interview.moviedb.R
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 val baseUrl: String
     get() {
         return BuildConfig.BASE_URL_RELEASE
     }
 
+
+val tokenUrl: String
+    get() {
+        return BuildConfig.NEWS_API_TOKEN
+    }
+
 fun showLog(message: String) {
     if (BuildConfig.DEBUG) {
-        Log.e("TAG_ENESIS", message)
+        Log.e("TAG_MOVIES", message)
     }
 }
 
@@ -41,6 +50,22 @@ fun <C> Activity.showActivityWithClearTop(classDestination: Class<C>) {
                 Intent.FLAG_ACTIVITY_CLEAR_TASK or
                 Intent.FLAG_ACTIVITY_NEW_TASK
     })
+}
+fun parseTimeUTC(input: String?, format: String, formatResult: String): String {
+    val dateFormat = SimpleDateFormat(format, Locale.getDefault()).apply {
+        timeZone = TimeZone.getTimeZone("UTC")
+    }
+    val dateFormatResult = SimpleDateFormat(formatResult, Locale("ID"))
+    var d = Date()
+
+    try {
+        d = dateFormat.parse(input)
+
+    } catch (e: ParseException) {
+        e.printStackTrace()
+    }
+
+    return dateFormatResult.format(d)
 }
 
 fun <C> Activity.showActivityWithClearTop(
@@ -169,6 +194,7 @@ fun ProgressBar.changeColor(color: Int) {
         indeterminateDrawable.setColorFilter(color, PorterDuff.Mode.MULTIPLY)
     }
 }
+
 
 fun AppCompatImageView.displayImage(context: Context?, url: Any?) {
     val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build();

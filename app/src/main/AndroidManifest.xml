@@ -26,6 +26,12 @@
             android:screenOrientation = "portrait"
             android:theme = "@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity"/>
+
+        <activity
+            android:name = ".view.movies.ActivityDetailsMovies"
+            android:screenOrientation = "portrait"
+            android:theme = "@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
     </application>
 
 </manifest>

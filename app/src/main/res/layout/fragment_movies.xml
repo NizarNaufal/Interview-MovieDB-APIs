@@ -40,7 +40,7 @@
                     android:layout_height="match_parent" />
                 <androidx.recyclerview.widget.RecyclerView
                     android:visibility="gone"
-                    android:id="@+id/recycler_view_movies_fragment"
+                    android:id="@+id/recycler_view_movies_fragment_ku"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
