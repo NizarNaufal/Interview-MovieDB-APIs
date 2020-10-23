@@ -5,11 +5,29 @@
     <string name="for_you">For you</string>
     <string name="loading_subtitles">Loading subtitles ... </string>
     <string name = "message_double_klik_to_close">Klik sekali lagi untuk keluar</string>
-    <string name="live_tv">Live TV</string>
+    <string name="account">Account</string>
     <string name="series">Series</string>
     <string name="movies">Category</string>
     <string name="menu_dashboard">Trending</string>
     <string name="try_again">Try Again</string>
     <string name="FEATURED">featured</string>
+    <string name="setting_group_profile">Profile</string>
+    <string name="setting_subtitle_name">Name</string>
+    <string name="setting_subtitle_email">Email</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="logout_title">Logout</string>
+    <string name="setting_group_others">Others</string>
+    <string name="setting_title_contact_us">Contact Us</string>
+    <string name="developer_email">nizarnfl21@gmail.com</string>
+    <string name="setting_title_copyright">Copyright</string>
+    <string name="copyright">Copyright © 2020 Nizar. All right reserved</string>
+    <string name="setting_title_about">About Us</string>
+    <string name="setting_title_build">Build Version 1.2</string>
+    <string name="job">"Job "</string>
+    <string name="job_desc"><![CDATA[Android & Web Engineer]]></string>
+    <string name="date_news">05 Jun 18</string>
+    <string name="myname">MyImage</string>
+    <string name="article_news">Article</string>
+    <string name="title_news_category">Cras at lobortis velit. In eu turpis euismod dolor</string>
 
 </resources>

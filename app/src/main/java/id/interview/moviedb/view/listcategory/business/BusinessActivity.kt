@@ -2,9 +2,7 @@ package id.interview.moviedb.view.listcategory.business
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import id.interview.moviedb.R
 import id.interview.moviedb.repository.IView
 import id.interview.moviedb.repository.NetworkingState
@@ -12,11 +10,8 @@ import id.interview.moviedb.repository.ViewNetworkState
 import id.interview.moviedb.repository.base.BaseActivity
 import id.interview.moviedb.support.*
 import id.interview.moviedb.view.home.modules.MoviesModels
-import id.interview.moviedb.view.home.modules.NewsAdapter
-import id.interview.moviedb.view.home.modules.StoriesModels
 import id.interview.moviedb.view.home.support.presenter.NewsPresenter
-import id.interview.moviedb.view.listcategory.business.adapter.BusinessAdapter
-import id.interview.moviedb.view.listcategory.business.adapter.BusinessModels
+import id.interview.moviedb.view.listcategory.support.CategoryAdapter
 import kotlinx.android.synthetic.main.activity_technology.*
 
 
@@ -24,7 +19,7 @@ class BusinessActivity : BaseActivity(), ViewNetworkState, IView {
 
     private var isRefresh = false
     private val presenter by lazy { NewsPresenter(baseContext, this) }
-    private var products = mutableListOf<BusinessModels>()
+    private var products = mutableListOf<MoviesModels>()
     private var country = "us"
     private var category = "business"
 
@@ -51,9 +46,9 @@ class BusinessActivity : BaseActivity(), ViewNetworkState, IView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun initList(dataList: ArrayList<BusinessModels>) {
-        val adapterCart = BusinessAdapter(
-            this, layoutInflater, dataList, R.layout.item_poster
+    private fun initList(dataList: ArrayList<MoviesModels>) {
+        val adapterCart = CategoryAdapter(
+            this, layoutInflater, dataList, R.layout.item_news_category
         )
         recycler_view_dummy?.apply {
             recycler_view_dummy?.layoutManager = LinearLayoutManager(context)
@@ -99,8 +94,8 @@ class BusinessActivity : BaseActivity(), ViewNetworkState, IView {
         runOnUiThread {
             when (key) {
                 presenter.moviesListParam -> {
-                    products = (response as List<BusinessModels>).toMutableList()
-                    initList(products as ArrayList<BusinessModels>)
+                    products = (response as List<MoviesModels>).toMutableList()
+                    initList(products as ArrayList<MoviesModels>)
                 }
             }
         }

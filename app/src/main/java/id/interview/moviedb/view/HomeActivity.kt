@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
 
         } else {
-            val defaultScreen = MainScreen.HOME
+            val defaultScreen = MainScreen.TRENDING
             scrollToScreen(defaultScreen)
             selectBottomNavigationViewMenuItem(defaultScreen.menuItemId)
         }
@@ -50,18 +50,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         defaultMenu = menu
 //        showBadgeMenu(false)
         return super.onPrepareOptionsMenu(menu)
-    }
-
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.menu_toolbar, menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-//            R.id.menu_chat -> showToast(getString(R.string.message_feature_coming_soon))
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
@@ -88,14 +76,13 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         mainPagerAdapter = FragmentAdapter2(supportFragmentManager)
         mainPagerAdapter.setItems(
             arrayListOf(
-                MainScreen.HOME,
-                MainScreen.SHOP,
-                MainScreen.DEALS,
-                MainScreen.NEARBY
+                MainScreen.TRENDING,
+                MainScreen.CATEGORY,
+                MainScreen.ACCOUNT
             )
         )
 
-        val defaultScreen = MainScreen.HOME
+        val defaultScreen = MainScreen.TRENDING
         scrollToScreen(defaultScreen)
         selectBottomNavigationViewMenuItem(defaultScreen.menuItemId)
 

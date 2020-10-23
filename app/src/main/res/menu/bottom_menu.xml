@@ -9,16 +9,11 @@
     <item
         android:id="@+id/second_fragment"
         android:title="@string/movies"
-        android:icon="@drawable/ic_movie"/>
-
-    <item
-        android:id="@+id/third_fragment"
-        android:title="@string/series"
-        android:icon="@drawable/ic_tv_show"/>
+        android:icon="@drawable/ic_category"/>
 
     <item
         android:id="@+id/fourth_fragment"
-        android:title="@string/live_tv"
-        android:icon="@drawable/ic_play"/>
+        android:title="@string/account"
+        android:icon="@drawable/ic_baseline_account_box_24"/>
 
 </menu>

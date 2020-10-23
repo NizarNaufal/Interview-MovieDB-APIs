@@ -15,6 +15,7 @@ import id.interview.moviedb.view.home.modules.MoviesModels
 import id.interview.moviedb.view.home.modules.NewsAdapter
 import id.interview.moviedb.view.home.modules.StoriesModels
 import id.interview.moviedb.view.home.support.presenter.NewsPresenter
+import id.interview.moviedb.view.listcategory.support.CategoryAdapter
 import kotlinx.android.synthetic.main.activity_technology.*
 
 
@@ -47,9 +48,9 @@ class GeneralActivity : BaseActivity(), ViewNetworkState, IView {
         }
     }
 
-    private fun initList(dataList: ArrayList<StoriesModels>) {
-        val adapterCart = NewsAdapter(
-            this, layoutInflater, dataList, R.layout.item_poster
+    private fun initList(dataList: ArrayList<MoviesModels>) {
+        val adapterCart = CategoryAdapter(
+            this, layoutInflater, dataList, R.layout.item_news_category
         )
         recycler_view_dummy?.apply {
             recycler_view_dummy?.layoutManager = LinearLayoutManager(context)
@@ -96,7 +97,7 @@ class GeneralActivity : BaseActivity(), ViewNetworkState, IView {
             when (key) {
                 presenter.moviesListParam -> {
                     products = (response as List<MoviesModels>).toMutableList()
-                    initList(products as ArrayList<StoriesModels>)
+                    initList(products as ArrayList<MoviesModels>)
                 }
             }
         }

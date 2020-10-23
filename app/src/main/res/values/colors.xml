@@ -32,5 +32,6 @@
     <color name="grey_5">#f2f2f2</color>
     <color name="grey_60">#666666</color>
     <color name = "colorTextGrey">#6c7c6e</color>
+    <color name="colorBackgroundDarker">#f7f7f7</color>
 
 </resources>
