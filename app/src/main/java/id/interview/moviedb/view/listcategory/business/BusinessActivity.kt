@@ -13,19 +13,18 @@ import id.interview.moviedb.repository.base.BaseActivity
 import id.interview.moviedb.support.*
 import id.interview.moviedb.view.home.modules.MoviesModels
 import id.interview.moviedb.view.home.modules.NewsAdapter
-import id.interview.moviedb.view.home.support.NewsPresenter
+import id.interview.moviedb.view.home.modules.StoriesModels
+import id.interview.moviedb.view.home.support.presenter.NewsPresenter
+import id.interview.moviedb.view.listcategory.business.adapter.BusinessAdapter
+import id.interview.moviedb.view.listcategory.business.adapter.BusinessModels
 import kotlinx.android.synthetic.main.activity_technology.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class BusinessActivity : BaseActivity(), ViewNetworkState, IView {
 
-    private val parent_view: View? = null
-    private var recyclerView: RecyclerView? = null
-    private var mAdapter: NewsAdapter? = null
     private var isRefresh = false
     private val presenter by lazy { NewsPresenter(baseContext, this) }
-    private var products = mutableListOf<MoviesModels>()
+    private var products = mutableListOf<BusinessModels>()
     private var country = "us"
     private var category = "business"
 
@@ -41,10 +40,19 @@ class BusinessActivity : BaseActivity(), ViewNetworkState, IView {
             setColorSchemeResources(R.color.colorRed, R.color.pruple, R.color.colorRed)
             setOnRefreshListener { requestProduct(true) }
         }
+        initToolbar()
+
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
+    private fun initToolbar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun initList(dataList: ArrayList<MoviesModels>) {
-        val adapterCart = NewsAdapter(
+    private fun initList(dataList: ArrayList<BusinessModels>) {
+        val adapterCart = BusinessAdapter(
             this, layoutInflater, dataList, R.layout.item_poster
         )
         recycler_view_dummy?.apply {
@@ -91,8 +99,8 @@ class BusinessActivity : BaseActivity(), ViewNetworkState, IView {
         runOnUiThread {
             when (key) {
                 presenter.moviesListParam -> {
-                    products = (response as List<MoviesModels>).toMutableList()
-                    initList(products as ArrayList<MoviesModels>)
+                    products = (response as List<BusinessModels>).toMutableList()
+                    initList(products as ArrayList<BusinessModels>)
                 }
             }
         }

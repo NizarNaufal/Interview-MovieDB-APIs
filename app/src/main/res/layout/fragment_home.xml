@@ -5,20 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_middle"
+            android:text="Stories"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/red" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_stories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@id/tv_message"
+            android:scrollbars="vertical"
+            android:paddingBottom="@dimen/spacing_xmiddle"
+            android:scrollingCache="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_180sdp"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_message_stories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_80sdp"
+            android:text="Headline"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/red" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
+            android:layout_marginTop="@dimen/_120sdp"
             android:scrollbars="vertical"
             android:paddingBottom="@dimen/spacing_xmiddle"
             android:scrollingCache="true" />
-
+        </RelativeLayout>
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_home"
             android:layout_width="match_parent"
@@ -45,5 +90,5 @@
         </LinearLayout>
 
     </RelativeLayout>
-
+    </androidx.core.widget.NestedScrollView>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

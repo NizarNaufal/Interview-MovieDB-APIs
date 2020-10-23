@@ -3,7 +3,7 @@ package id.interview.moviedb.view.home.modules;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +23,14 @@ import java.util.List;
 import id.interview.moviedb.R;
 import id.interview.moviedb.view.listcategory.ActivityDetailsMovies;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHolder> {
 
-    public final List<StoriesModels> movies;
+    public final List<MoviesModels> movies;
     private final LayoutInflater layoutInflater;
     private final int rowLayout;
     private final Context mContext;
 
-    public NewsAdapter(Context context, LayoutInflater layoutInflater, List<StoriesModels> movies, @LayoutRes int rowLayout) {
+    public StoriesAdapter(Context context, LayoutInflater layoutInflater, List<MoviesModels> movies, @LayoutRes int rowLayout) {
         mContext = context;
         this.movies = movies;
         this.layoutInflater = layoutInflater;
@@ -46,15 +46,21 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        StoriesModels movies_tayang = movies.get(position);
-        holder.nama_news.setText(movies_tayang.getName_stories());
-        holder.feature_news.setText(movies_tayang.getCategory_news());
-        holder.desc_news.setText(movies_tayang.getDesc_stories());
+        MoviesModels movies_tayang = movies.get(position);
+        holder.nama_news.setText(movies_tayang.getTitle_news());
+        holder.category_news.setText(movies_tayang.getSource().getName());
+        holder.content_news.setText(movies_tayang.getDesc_news());
+        holder.author_news.setText("Author : "+ movies_tayang.getAuthor_name());
+        Glide.with(mContext)
+                .load( movies_tayang.getUrl_to_image())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(holder.image);
+
         holder.lytParent.setOnClickListener(view1 -> {
-            String url = movies_tayang.getUrl_image_stories();
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(url));
-            mContext.startActivity(i);
+            Intent intent = new Intent(view1.getContext(), ActivityDetailsMovies.class);
+            intent.putExtra("data", movies.get(position));
+            view1.getContext().startActivity(intent);
         });
     }
     @Override
@@ -65,16 +71,21 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private AppCompatTextView nama_news;
-        private AppCompatTextView feature_news;
-        private AppCompatTextView desc_news;
+        private AppCompatTextView content_news;
+        private AppCompatTextView category_news;
+        private AppCompatTextView author_news;
+        private AppCompatImageView image;
         private RelativeLayout lytParent;
         public ViewHolder(View view) {
             super(view);
-            nama_news = view.findViewById(R.id.title_news);
-            desc_news = view.findViewById(R.id.description_news);
-            feature_news = view.findViewById(R.id.featured);
+            nama_news = view.findViewById(R.id.nama_news_stories);
+            content_news = view.findViewById(R.id.content_news_stories);
+            category_news = view.findViewById(R.id.category_news_stories);
+            author_news = view.findViewById(R.id.author_news_stories);
+            image = view.findViewById(R.id.image_news_stories);
             lytParent = view.findViewById(R.id.rootLayout_news);
         }
     }
 
 }
+

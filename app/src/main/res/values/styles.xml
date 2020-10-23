@@ -1,12 +1,37 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <style name = "AppTheme" parent = "BaseAppTheme" />
+
+    <style name = "BaseAppTheme" parent = "Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name = "colorPrimary">@color/white</item>
+        <item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name = "colorAccent">@color/colorAccent</item>
+        <item name = "toolbarStyle">@style/CustomToolbar</item>
+        <item name = "alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name = "android:textViewStyle">@style/TextBasic</item>
+        <item name = "android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
     </style>
 
+    <style name = "AlertDialogTheme" parent = "ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name = "buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name = "buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+    <style name = "NegativeButtonStyle" parent = "Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name = "android:textColor">@color/red</item>
+        <item name = "android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name = "PositiveButtonStyle" parent = "Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name = "android:textColor">@color/green</item>
+        <item name = "android:fontFamily">sans-serif</item>
+    </style>
+    <style name = "TextBasic" parent = "TextAppearance.AppCompat.Medium">
+        <item name = "android:fontFamily">@font/noto_sans</item>
+        <item name = "android:textColor">@color/colorTextGrey</item>
+        <item name = "android:textSize">14sp</item>
+    </style>
     <style name = "CustomToolbar" parent = "@style/Widget.AppCompat.Toolbar">
         <item name = "android:theme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name = "popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>

@@ -36,37 +36,37 @@
         <activity
             android:name = ".view.listcategory.technology.TechnologyActivity"
             android:screenOrientation = "portrait"
-            android:theme = "@style/AppTheme.NoActionBar"
+            android:label="Trending Technology"
             tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name = ".view.listcategory.entertainment.EntertainmentActivity"
             android:screenOrientation = "portrait"
-            android:theme = "@style/AppTheme.NoActionBar"
+            android:label="Trending Entertainment"
             tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name = ".view.listcategory.sports.SportsActivity"
             android:screenOrientation = "portrait"
-            android:theme = "@style/AppTheme.NoActionBar"
+            android:label="Trending Sports"
             tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name = ".view.listcategory.science.ScienceActivity"
             android:screenOrientation = "portrait"
-            android:theme = "@style/AppTheme.NoActionBar"
+            android:label="Trending Science"
             tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name = ".view.listcategory.general.GeneralActivity"
             android:screenOrientation = "portrait"
-            android:theme = "@style/AppTheme.NoActionBar"
+            android:label="Trending General"
             tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name = ".view.listcategory.health.HealthActivity"
             android:screenOrientation = "portrait"
-            android:theme = "@style/AppTheme.NoActionBar"
+            android:label="Trending Health"
             tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name = ".view.listcategory.business.BusinessActivity"
             android:screenOrientation = "portrait"
-            android:theme = "@style/AppTheme.NoActionBar"
+            android:label="Trending Business"
             tools:ignore="LockedOrientationActivity"/>
     </application>
 

@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import id.interview.moviedb.R
 import id.interview.moviedb.repository.IView
 import id.interview.moviedb.repository.NetworkingState
@@ -15,9 +13,9 @@ import id.interview.moviedb.repository.base.BaseActivity
 import id.interview.moviedb.support.*
 import id.interview.moviedb.view.home.modules.MoviesModels
 import id.interview.moviedb.view.home.modules.NewsAdapter
-import id.interview.moviedb.view.home.support.NewsPresenter
+import id.interview.moviedb.view.home.modules.StoriesModels
+import id.interview.moviedb.view.home.support.presenter.NewsPresenter
 import kotlinx.android.synthetic.main.activity_technology.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HealthActivity : BaseActivity(), ViewNetworkState, IView {
@@ -26,8 +24,13 @@ class HealthActivity : BaseActivity(), ViewNetworkState, IView {
     private var recyclerView: RecyclerView? = null
     private var mAdapter: NewsAdapter? = null
     private var isRefresh = false
-    private val presenter by lazy { NewsPresenter(baseContext, this) }
-    private var products = mutableListOf<MoviesModels>()
+    private val presenter by lazy {
+        NewsPresenter(
+            baseContext,
+            this
+        )
+    }
+    private var products = mutableListOf<StoriesModels>()
     private var country = "us"
     private var category = "health"
 
@@ -45,7 +48,7 @@ class HealthActivity : BaseActivity(), ViewNetworkState, IView {
         }
     }
 
-    private fun initList(dataList: ArrayList<MoviesModels>) {
+    private fun initList(dataList: ArrayList<StoriesModels>) {
         val adapterCart = NewsAdapter(
             this, layoutInflater, dataList, R.layout.item_poster
         )
@@ -93,8 +96,8 @@ class HealthActivity : BaseActivity(), ViewNetworkState, IView {
         runOnUiThread {
             when (key) {
                 presenter.moviesListParam -> {
-                    products = (response as List<MoviesModels>).toMutableList()
-                    initList(products as ArrayList<MoviesModels>)
+                    products = (response as List<StoriesModels>).toMutableList()
+                    initList(products as ArrayList<StoriesModels>)
                 }
             }
         }

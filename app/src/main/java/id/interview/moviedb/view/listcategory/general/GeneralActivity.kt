@@ -13,7 +13,8 @@ import id.interview.moviedb.repository.base.BaseActivity
 import id.interview.moviedb.support.*
 import id.interview.moviedb.view.home.modules.MoviesModels
 import id.interview.moviedb.view.home.modules.NewsAdapter
-import id.interview.moviedb.view.home.support.NewsPresenter
+import id.interview.moviedb.view.home.modules.StoriesModels
+import id.interview.moviedb.view.home.support.presenter.NewsPresenter
 import kotlinx.android.synthetic.main.activity_technology.*
 
 
@@ -23,7 +24,12 @@ class GeneralActivity : BaseActivity(), ViewNetworkState, IView {
     private var recyclerView: RecyclerView? = null
     private var mAdapter: NewsAdapter? = null
     private var isRefresh = false
-    private val presenter by lazy { NewsPresenter(baseContext, this) }
+    private val presenter by lazy {
+        NewsPresenter(
+            baseContext,
+            this
+        )
+    }
     private var products = mutableListOf<MoviesModels>()
     private var country = "us"
     private var category = "general"
@@ -41,7 +47,7 @@ class GeneralActivity : BaseActivity(), ViewNetworkState, IView {
         }
     }
 
-    private fun initList(dataList: ArrayList<MoviesModels>) {
+    private fun initList(dataList: ArrayList<StoriesModels>) {
         val adapterCart = NewsAdapter(
             this, layoutInflater, dataList, R.layout.item_poster
         )
@@ -90,7 +96,7 @@ class GeneralActivity : BaseActivity(), ViewNetworkState, IView {
             when (key) {
                 presenter.moviesListParam -> {
                     products = (response as List<MoviesModels>).toMutableList()
-                    initList(products as ArrayList<MoviesModels>)
+                    initList(products as ArrayList<StoriesModels>)
                 }
             }
         }

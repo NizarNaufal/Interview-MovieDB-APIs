@@ -43,6 +43,25 @@ fun showLog(message: String) {
         Log.e("TAG_MOVIES", message)
     }
 }
+fun DateFormat(oldstringDate: String?): String? {
+    val newDate: String
+    val dateFormat =
+        SimpleDateFormat("E, d MMM yyyy", Locale(getCountry()))
+    newDate = try {
+        val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(oldstringDate)
+        dateFormat.format(date)
+    } catch (e: ParseException) {
+        e.printStackTrace()
+        oldstringDate.toString()
+    }
+    return newDate
+}
+
+fun getCountry(): String? {
+    val locale = Locale.getDefault()
+    val country = java.lang.String.valueOf(locale.country)
+    return country.toLowerCase()
+}
 
 fun <C> Activity.showActivityWithClearTop(classDestination: Class<C>) {
     startActivity(Intent(this, classDestination).apply {

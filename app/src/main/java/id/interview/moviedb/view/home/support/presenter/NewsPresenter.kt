@@ -1,4 +1,4 @@
-package id.interview.moviedb.view.home.support
+package id.interview.moviedb.view.home.support.presenter
 
 import android.content.Context
 import com.google.gson.Gson
@@ -7,13 +7,20 @@ import id.interview.moviedb.repository.NetworkingState
 import id.interview.moviedb.repository.ViewNetworkState
 import id.interview.moviedb.repository.api.ResponseCode
 import id.interview.moviedb.view.home.modules.MoviesModels
+import id.interview.moviedb.view.home.support.IMoviesPresenter
+import id.interview.moviedb.view.home.support.iteractor.NewsIteractor
 import org.json.JSONObject
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class NewsPresenter(var context: Context, var view: ViewNetworkState) : IMoviesPresenter {
+class NewsPresenter(var context: Context, var view: ViewNetworkState) :
+    IMoviesPresenter {
 
-    private val iteractor by lazy { NewsIteractor(AppApiClient.mainClient()) }
+    private val iteractor by lazy {
+        NewsIteractor(
+            AppApiClient.mainClient()
+        )
+    }
 
     val moviesParam = "movies.param"
     val moviesListParam = "movies.list.param"

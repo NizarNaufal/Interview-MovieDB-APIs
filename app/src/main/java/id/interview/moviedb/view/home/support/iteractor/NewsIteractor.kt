@@ -1,4 +1,4 @@
-package id.interview.moviedb.view.home.support
+package id.interview.moviedb.view.home.support.iteractor
 
 import id.interview.moviedb.repository.api.MainApi
 import id.interview.moviedb.repository.api.ResponseCode

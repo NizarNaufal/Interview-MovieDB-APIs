@@ -19,9 +19,40 @@
         card_view:elevation="15dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp">
+
+                <ImageView
+                    android:id="@+id/image_news_stories"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/placeholder_profile" />
+
+                <TextView
+                    android:id="@+id/category_news_stories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/button_round_1"
+                    android:backgroundTint="@color/white"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Kesehatan"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,7 +60,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title_news"
+                    android:id="@+id/nama_news_stories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -44,34 +75,33 @@
                     android:textSize="15dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/description_news"
+                    android:id="@+id/content_news_stories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/neosans_pro_regular"
                     android:gravity="top"
                     android:maxLines="2"
                     android:text="Corona sudah ditemukan vaksinnya. Namun pemerintah masih menggalang dana"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
-
-                <TextView
-                    android:id="@+id/featured"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/author_news_stories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_round"
-                    android:paddingLeft="@dimen/spacing_middle"
-                    android:paddingTop="1dp"
-                    android:layout_marginLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/spacing_middle"
-                    android:paddingBottom="2dp"
-                    android:text="@string/FEATURED"
-                    android:textColor="@android:color/black"
-                    android:textSize="10sp" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/neosans_pro_regular"
+                    android:gravity="top"
+                    android:maxLines="2"
+                    android:text="Author : "
+                    android:textColor="@color/red"
+                    android:textSize="12dp" />
             </LinearLayout>
 
         </LinearLayout>

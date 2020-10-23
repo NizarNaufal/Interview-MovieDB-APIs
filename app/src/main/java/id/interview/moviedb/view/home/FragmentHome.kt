@@ -13,14 +13,20 @@ import id.interview.moviedb.repository.base.BaseFragment
 import id.interview.moviedb.support.*
 import id.interview.moviedb.view.home.modules.NewsAdapter
 import id.interview.moviedb.view.home.modules.MoviesModels
-import id.interview.moviedb.view.home.support.NewsPresenter
+import id.interview.moviedb.view.home.modules.StoriesAdapter
+import id.interview.moviedb.view.home.modules.StoriesModels
+import id.interview.moviedb.view.home.support.presenter.NewsPresenter
+import id.interview.moviedb.view.home.support.presenter.StoriesPresenter
+import kotlinx.android.synthetic.main.activity_technology.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class FragmentHome : BaseFragment(), ViewNetworkState, IView {
 
     private val presenter by lazy { context?.let { NewsPresenter(it, this) } }
+    private val presenterStories by lazy { context?.let { StoriesPresenter(it, this) } }
     private var isRefresh = false
-    private var products = mutableListOf<MoviesModels>()
+    private var headlines = mutableListOf<MoviesModels>()
+    private var stories = mutableListOf<StoriesModels>()
     private var country = "us"
 
     override fun onCreateView(
@@ -55,8 +61,13 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
         activity?.runOnUiThread {
             when (key) {
                 presenter?.moviesParam -> {
-                    products = (response as List<MoviesModels>).toMutableList()
-                    initList(products as ArrayList<MoviesModels>)
+                    headlines = (response as List<MoviesModels>).toMutableList()
+                    initList(headlines as ArrayList<MoviesModels>)
+                }
+
+                presenterStories?.storiesParam -> {
+                    stories = (response as List<StoriesModels>).toMutableList()
+                    initStories(stories as ArrayList<StoriesModels>)
                 }
             }
         }
@@ -67,11 +78,13 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
         activity?.runOnUiThread {
             when (key) {
                 presenter?.moviesParam -> activity?.showToast(message.toString())
+                presenterStories?.storiesParam -> activity?.showToast(message.toString())
             }
         }
     }
     override fun initView() {
         requestEvent()
+        requestStories()
         swipe_refresh_news?.apply {
             setColorSchemeResources(R.color.red, R.color.yellow, R.color.colorRed)
             setOnRefreshListener {
@@ -87,15 +100,30 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
 
     }
 
-    private fun initList(dataList: ArrayList<MoviesModels>) {
+    private fun requestStories(isRefresh: Boolean = false) {
+        this.isRefresh = isRefresh
+        presenterStories?.getStoriesNews(tokenUrl)
+
+    }
+    private fun initStories(dataList: ArrayList<StoriesModels>) {
         val adapterProduct = NewsAdapter(
             context, layoutInflater, dataList, R.layout.item_poster
         )
-       recycler_view?.apply {
-           recycler_view?.layoutManager = LinearLayoutManager(activity)
-           recycler_view?.setHasFixedSize(true)
-           adapter = adapterProduct
-       }
+        recycler_view?.apply {
+            recycler_view?.layoutManager = LinearLayoutManager(activity)
+            recycler_view?.setHasFixedSize(true)
+            adapter = adapterProduct
+        }
+    }
 
+    private fun initList(dataList: ArrayList<MoviesModels>) {
+        val adapterProduct = StoriesAdapter(
+            context, layoutInflater, dataList, R.layout.item_stories
+        )
+        recycler_view_stories?.apply {
+            recycler_view_stories?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
+            recycler_view_stories?.setHasFixedSize(true)
+            adapter = adapterProduct
+        }
     }
 }

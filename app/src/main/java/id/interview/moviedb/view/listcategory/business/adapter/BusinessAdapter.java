@@ -1,36 +1,32 @@
-package id.interview.moviedb.view.home.modules;
+package id.interview.moviedb.view.listcategory.business.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.LayoutRes;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.balysv.materialripple.MaterialRippleLayout;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
 import id.interview.moviedb.R;
+import id.interview.moviedb.view.home.modules.StoriesModels;
 import id.interview.moviedb.view.listcategory.ActivityDetailsMovies;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.ViewHolder> {
 
-    public final List<StoriesModels> movies;
+    public final List<BusinessModels> movies;
     private final LayoutInflater layoutInflater;
     private final int rowLayout;
     private final Context mContext;
 
-    public NewsAdapter(Context context, LayoutInflater layoutInflater, List<StoriesModels> movies, @LayoutRes int rowLayout) {
+    public BusinessAdapter(Context context, LayoutInflater layoutInflater, List<BusinessModels> movies, @LayoutRes int rowLayout) {
         mContext = context;
         this.movies = movies;
         this.layoutInflater = layoutInflater;
@@ -46,15 +42,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        StoriesModels movies_tayang = movies.get(position);
+        BusinessModels movies_tayang = movies.get(position);
         holder.nama_news.setText(movies_tayang.getName_stories());
         holder.feature_news.setText(movies_tayang.getCategory_news());
-        holder.desc_news.setText(movies_tayang.getDesc_stories());
         holder.lytParent.setOnClickListener(view1 -> {
-            String url = movies_tayang.getUrl_image_stories();
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(url));
-            mContext.startActivity(i);
+            Intent intent = new Intent(view1.getContext(), ActivityDetailsMovies.class);
+            intent.putExtra("data", movies.get(position));
+            view1.getContext().startActivity(intent);
         });
     }
     @Override
@@ -66,14 +60,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private AppCompatTextView nama_news;
         private AppCompatTextView feature_news;
-        private AppCompatTextView desc_news;
-        private RelativeLayout lytParent;
+
+        private MaterialRippleLayout lytParent;
         public ViewHolder(View view) {
             super(view);
             nama_news = view.findViewById(R.id.title_news);
-            desc_news = view.findViewById(R.id.description_news);
             feature_news = view.findViewById(R.id.featured);
-            lytParent = view.findViewById(R.id.rootLayout_news);
+            lytParent = view.findViewById(R.id.lyt_parent);
         }
     }
 

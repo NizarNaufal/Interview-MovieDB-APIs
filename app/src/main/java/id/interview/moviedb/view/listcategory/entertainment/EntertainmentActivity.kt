@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import id.interview.moviedb.R
 import id.interview.moviedb.repository.IView
 import id.interview.moviedb.repository.NetworkingState
@@ -15,9 +13,11 @@ import id.interview.moviedb.repository.base.BaseActivity
 import id.interview.moviedb.support.*
 import id.interview.moviedb.view.home.modules.MoviesModels
 import id.interview.moviedb.view.home.modules.NewsAdapter
-import id.interview.moviedb.view.home.support.NewsPresenter
+import id.interview.moviedb.view.home.modules.StoriesModels
+import id.interview.moviedb.view.home.support.presenter.NewsPresenter
+import id.interview.moviedb.view.listcategory.business.adapter.BusinessAdapter
+import id.interview.moviedb.view.listcategory.business.adapter.BusinessModels
 import kotlinx.android.synthetic.main.activity_technology.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class EntertainmentActivity : BaseActivity(), ViewNetworkState, IView {
@@ -26,8 +26,13 @@ class EntertainmentActivity : BaseActivity(), ViewNetworkState, IView {
     private var recyclerView: RecyclerView? = null
     private var mAdapter: NewsAdapter? = null
     private var isRefresh = false
-    private val presenter by lazy { NewsPresenter(baseContext, this) }
-    private var products = mutableListOf<MoviesModels>()
+    private val presenter by lazy {
+        NewsPresenter(
+            baseContext,
+            this
+        )
+    }
+    private var products = mutableListOf<BusinessModels>()
     private var country = "us"
     private var category = "entertainment"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +49,8 @@ class EntertainmentActivity : BaseActivity(), ViewNetworkState, IView {
         }
     }
 
-    private fun initList(dataList: ArrayList<MoviesModels>) {
-        val adapterCart = NewsAdapter(
+    private fun initList(dataList: ArrayList<BusinessModels>) {
+        val adapterCart = BusinessAdapter(
             this, layoutInflater, dataList, R.layout.item_poster
         )
         recycler_view_dummy?.apply {
@@ -92,8 +97,8 @@ class EntertainmentActivity : BaseActivity(), ViewNetworkState, IView {
         runOnUiThread {
             when (key) {
                 presenter.moviesListParam -> {
-                    products = (response as List<MoviesModels>).toMutableList()
-                    initList(products as ArrayList<MoviesModels>)
+                    products = (response as List<BusinessModels>).toMutableList()
+                    initList(products as ArrayList<BusinessModels>)
                 }
             }
         }
