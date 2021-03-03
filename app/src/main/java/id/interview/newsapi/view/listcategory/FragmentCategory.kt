@@ -17,7 +17,7 @@ import id.interview.newsapi.view.listcategory.health.HealthActivity
 import id.interview.newsapi.view.listcategory.science.ScienceActivity
 import id.interview.newsapi.view.listcategory.sports.SportsActivity
 import id.interview.newsapi.view.listcategory.technology.TechnologyActivity
-import kotlinx.android.synthetic.main.fragment_movies.*
+import kotlinx.android.synthetic.main.fragment_news.*
 
 class FragmentCategory : BaseFragment(), ViewNetworkState, IView {
 

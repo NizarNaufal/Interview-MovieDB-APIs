@@ -28,7 +28,7 @@
             tools:ignore="LockedOrientationActivity"/>
 
         <activity
-            android:name = "id.interview.newsapi.view.listcategory.ActivityDetailsMovies"
+            android:name = "id.interview.newsapi.view.listcategory.ActivityDetailsNews"
             android:screenOrientation = "portrait"
             android:theme = "@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity"/>

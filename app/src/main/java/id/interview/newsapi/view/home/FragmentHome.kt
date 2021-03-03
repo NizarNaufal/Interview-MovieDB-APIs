@@ -1,5 +1,6 @@
 package id.interview.newsapi.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +12,16 @@ import id.interview.newsapi.repository.NetworkingState
 import id.interview.newsapi.repository.ViewNetworkState
 import id.interview.newsapi.repository.base.BaseFragment
 import id.interview.newsapi.support.*
-import id.interview.newsapi.view.home.modules.NewsAdapter
 import id.interview.newsapi.view.home.modules.MoviesModels
+import id.interview.newsapi.view.home.modules.NewsAdapter
 import id.interview.newsapi.view.home.modules.StoriesAdapter
 import id.interview.newsapi.view.home.modules.StoriesModels
 import id.interview.newsapi.view.home.support.presenter.NewsPresenter
 import id.interview.newsapi.view.home.support.presenter.StoriesPresenter
+import id.interview.newsapi.view.listcategory.ActivityDetailsNews
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class FragmentHome : BaseFragment(), ViewNetworkState, IView {
+class FragmentHome : BaseFragment(), ViewNetworkState, IView,StoriesAdapter.onClickListener {
 
     private val presenter by lazy { context?.let { NewsPresenter(it, this) } }
     private val presenterStories by lazy { context?.let { StoriesPresenter(it, this) } }
@@ -51,6 +53,11 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
             when (key) {
                 presenter?.moviesParam -> {
                     recycler_view?.apply { if (status) gone() else visible() }
+                    shimmer_home?.apply { if (status) visible() else gone() }
+                }
+                presenterStories?.storiesParam -> {
+                    recycler_view_stories?.apply{if (status) gone() else visible()}
+                    shimmer_home?.apply { if (status) visible() else gone() }
                 }
             }
         }
@@ -105,9 +112,11 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
 
     }
     private fun initStories(dataList: ArrayList<StoriesModels>) {
-        val adapterProduct = NewsAdapter(
-            context, layoutInflater, dataList, R.layout.item_poster
-        )
+        val adapterProduct = context?.let {
+            NewsAdapter(
+                it, dataList
+            )
+        }
         recycler_view?.apply {
             recycler_view?.layoutManager = LinearLayoutManager(activity)
             recycler_view?.setHasFixedSize(true)
@@ -116,13 +125,23 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView {
     }
 
     private fun initList(dataList: ArrayList<MoviesModels>) {
-        val adapterProduct = StoriesAdapter(
-            context, layoutInflater, dataList, R.layout.item_stories
-        )
+        val adapterProduct = context?.let {
+            StoriesAdapter(
+                it,dataList
+            )
+        }
         recycler_view_stories?.apply {
             recycler_view_stories?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
             recycler_view_stories?.setHasFixedSize(true)
             adapter = adapterProduct
         }
+    }
+
+    override fun onViewNews(index: Int) {
+        val cart = stories[index]
+        val intent = Intent(activity, ActivityDetailsNews::class.java)
+        intent.putExtra("data", cart)
+        startActivity(intent)
+
     }
 }

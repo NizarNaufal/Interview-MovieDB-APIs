@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import id.interview.newsapi.R;
 import id.interview.newsapi.view.home.modules.MoviesModels;
-import id.interview.newsapi.view.listcategory.ActivityDetailsMovies;
+import id.interview.newsapi.view.listcategory.ActivityDetailsNews;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
@@ -54,7 +54,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 .skipMemoryCache(true)
                 .into(holder.image);
         holder.lytParent.setOnClickListener(view1 -> {
-            Intent intent = new Intent(view1.getContext(), ActivityDetailsMovies.class);
+            Intent intent = new Intent(view1.getContext(), ActivityDetailsNews.class);
             intent.putExtra("data", movies.get(position));
             view1.getContext().startActivity(intent);
         });

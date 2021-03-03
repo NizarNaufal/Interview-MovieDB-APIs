@@ -5,17 +5,18 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.squareup.picasso.Picasso
 import id.interview.newsapi.R
 import id.interview.newsapi.repository.IView
 import id.interview.newsapi.repository.ViewNetworkState
 import id.interview.newsapi.repository.base.BaseActivity
-import id.interview.newsapi.support.displayImage
 import id.interview.newsapi.view.home.modules.MoviesModels
 import kotlinx.android.synthetic.main.activity_news_details.*
 import kotlinx.android.synthetic.main.include_news_details_content.*
+import kotlinx.android.synthetic.main.item_stories.view.*
 
 
-class ActivityDetailsMovies: BaseActivity(), ViewNetworkState, IView {
+class ActivityDetailsNews: BaseActivity(), ViewNetworkState, IView {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +44,11 @@ class ActivityDetailsMovies: BaseActivity(), ViewNetworkState, IView {
     }
     override fun initView() {
         val data = intent.getParcelableExtra<MoviesModels>("data")
-        image_news_content.displayImage(baseContext, data?.url_to_image)
-       title_news_ku.text = data?.title_news
+        Picasso.get()
+            .load(data?.url_to_image)
+            .error(R.drawable.image_not_found)
+            .into(image_news_content)
+        title_news_ku.text = data?.title_news
         content_news.text = data?.desc_news
 
         btn_share?.setOnClickListener {

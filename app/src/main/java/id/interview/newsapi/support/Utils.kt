@@ -215,12 +215,6 @@ fun ProgressBar.changeColor(color: Int) {
 }
 
 
-fun AppCompatImageView.displayImage(context: Context?, url: Any?) {
-    val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build();
-
-    context?.let { GlideApp.with(it).load(url).into(this) }
-}
-
 fun View.enable() {
     isEnabled = true
 }
