@@ -24,10 +24,12 @@
     <string name="setting_title_about">About Us</string>
     <string name="setting_title_build">Build Version 1.2</string>
     <string name="job">"Job "</string>
-    <string name="job_desc"><![CDATA[Android & Web Engineer]]></string>
+    <string name="job_desc"><![CDATA[Android & iOS Engineer]]></string>
     <string name="date_news">05 Jun 18</string>
     <string name="myname">MyImage</string>
     <string name="article_news">Article</string>
     <string name="title_news_category">Cras at lobortis velit. In eu turpis euismod dolor</string>
+    <string name="company">Company :</string>
+    <string name="loca">Location :</string>
 
 </resources>

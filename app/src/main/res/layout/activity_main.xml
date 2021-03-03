@@ -14,7 +14,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <id.interview.moviedb.support.customview.ViewPager
+    <id.interview.newsapi.support.customview.ViewPager
         android:id = "@+id/view_pager"
         android:layout_width = "match_parent"
         android:layout_height = "match_parent"

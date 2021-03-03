@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/overlay_dark_10">
 
-                <id.interview.moviedb.support.ProportionalImageView
+                <id.interview.newsapi.support.ProportionalImageView
                     android:id="@+id/image_news_content"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"

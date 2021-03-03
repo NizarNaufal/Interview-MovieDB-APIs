@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="id.interview.moviedb">
+    package="id.interview.newsapi">
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name = ".view.Root"
+            android:name = "id.interview.newsapi.view.Root"
             android:screenOrientation = "portrait"
             tools:ignore="LockedOrientationActivity"
             android:theme = "@style/AppTheme.NoActionBar">
@@ -22,49 +22,49 @@
             </intent-filter>
         </activity>
         <activity
-            android:name = ".view.HomeActivity"
+            android:name = "id.interview.newsapi.view.HomeActivity"
             android:screenOrientation = "portrait"
             android:theme = "@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity"/>
 
         <activity
-            android:name = ".view.listcategory.ActivityDetailsMovies"
+            android:name = "id.interview.newsapi.view.listcategory.ActivityDetailsMovies"
             android:screenOrientation = "portrait"
             android:theme = "@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity"/>
 
         <activity
-            android:name = ".view.listcategory.technology.TechnologyActivity"
+            android:name = "id.interview.newsapi.view.listcategory.technology.TechnologyActivity"
             android:screenOrientation = "portrait"
             android:label="Trending Technology"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name = ".view.listcategory.entertainment.EntertainmentActivity"
+            android:name = "id.interview.newsapi.view.listcategory.entertainment.EntertainmentActivity"
             android:screenOrientation = "portrait"
             android:label="Trending Entertainment"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name = ".view.listcategory.sports.SportsActivity"
+            android:name = "id.interview.newsapi.view.listcategory.sports.SportsActivity"
             android:screenOrientation = "portrait"
             android:label="Trending Sports"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name = ".view.listcategory.science.ScienceActivity"
+            android:name = "id.interview.newsapi.view.listcategory.science.ScienceActivity"
             android:screenOrientation = "portrait"
             android:label="Trending Science"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name = ".view.listcategory.general.GeneralActivity"
+            android:name = "id.interview.newsapi.view.listcategory.general.GeneralActivity"
             android:screenOrientation = "portrait"
             android:label="Trending General"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name = ".view.listcategory.health.HealthActivity"
+            android:name = "id.interview.newsapi.view.listcategory.health.HealthActivity"
             android:screenOrientation = "portrait"
             android:label="Trending Health"
             tools:ignore="LockedOrientationActivity"/>
         <activity
-            android:name = ".view.listcategory.business.BusinessActivity"
+            android:name = "id.interview.newsapi.view.listcategory.business.BusinessActivity"
             android:screenOrientation = "portrait"
             android:label="Trending Business"
             tools:ignore="LockedOrientationActivity"/>
