@@ -1,4 +1,4 @@
-package id.interview.newsapi.view.home.modules
+package id.interview.newsapi.view.listcategory.support
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import id.interview.newsapi.R
-import kotlinx.android.synthetic.main.item_stories.view.*
+import id.interview.newsapi.view.home.modules.MoviesModels
+import kotlinx.android.synthetic.main.item_news_category.view.*
 
-class StoriesAdapter(val context: Context, var news: List<MoviesModels>) : RecyclerView.Adapter<StoriesAdapter.ViewHolder>()  {
+class CategoryAdapter(val context: Context, var news: List<MoviesModels>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>()  {
 
     var listener: onClickListener? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_stories, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_poster, parent, false)
         return ViewHolder(v)
     }
 
@@ -24,14 +24,12 @@ class StoriesAdapter(val context: Context, var news: List<MoviesModels>) : Recyc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val newsBind = news[position]
-        holder.itemView.nama_news_stories.text = newsBind.title_news
-        holder.itemView.content_news_stories.text = newsBind.desc_news
-        holder.itemView.category_news_stories.text = newsBind.source?.name
-        holder.itemView.author_news_stories.text = newsBind.author_name
+        holder.itemView.title_ku_option.text = newsBind.title_news
+        holder.itemView.featured_ku.text = newsBind.source?.name
         Picasso.get()
             .load(newsBind.url_to_image)
             .error(R.drawable.image_not_found)
-            .into(holder.itemView.image_news_stories);
+            .into(holder.itemView.image_ku);
         holder.itemView.setOnClickListener {
             listener?.onViewNews(position)
         }

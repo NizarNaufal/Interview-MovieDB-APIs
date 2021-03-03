@@ -21,7 +21,7 @@ import id.interview.newsapi.view.home.support.presenter.StoriesPresenter
 import id.interview.newsapi.view.listcategory.ActivityDetailsNews
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class FragmentHome : BaseFragment(), ViewNetworkState, IView,StoriesAdapter.onClickListener {
+class FragmentHome : BaseFragment(), ViewNetworkState, IView,StoriesAdapter.onClickListener,NewsAdapter.onClickListener {
 
     private val presenter by lazy { context?.let { NewsPresenter(it, this) } }
     private val presenterStories by lazy { context?.let { StoriesPresenter(it, this) } }
@@ -143,5 +143,12 @@ class FragmentHome : BaseFragment(), ViewNetworkState, IView,StoriesAdapter.onCl
         intent.putExtra("data", cart)
         startActivity(intent)
 
+    }
+
+    override fun onViewWebview(index: Int) {
+        val cart = stories[index]
+        val intent = Intent(activity, WebviewArticle::class.java)
+        intent.putExtra("url_parse",cart.url_image_stories)
+        startActivity(intent)
     }
 }

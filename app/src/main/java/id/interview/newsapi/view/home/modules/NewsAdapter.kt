@@ -8,9 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.interview.newsapi.R
+import id.interview.newsapi.view.listcategory.support.CategoryAdapter
 import kotlinx.android.synthetic.main.item_poster.view.*
 
 class NewsAdapter(val context: Context, var news: List<StoriesModels>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>()  {
+
+    var listener: onClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_poster, parent, false)
         return ViewHolder(v)
@@ -26,13 +30,14 @@ class NewsAdapter(val context: Context, var news: List<StoriesModels>) : Recycle
         holder.itemView.description_news.text = newsBind.desc_stories
         holder.itemView.featured.text = newsBind.category_news
         holder.itemView.setOnClickListener {
-            val url: String? = newsBind.url_image_stories
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(url)
-           context.startActivity(i)
+            listener?.onViewWebview(position)
         }
 
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    interface onClickListener {
+        fun onViewWebview(index: Int)
+    }
 }

@@ -28,7 +28,7 @@
             app:shimmer_auto_start="false"
             app:shimmer_duration="800">
 
-            <include layout="@layout/place_holder_page" />
+            <include layout="@layout/place_holder_category" />
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 

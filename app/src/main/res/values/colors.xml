@@ -33,5 +33,7 @@
     <color name="grey_60">#666666</color>
     <color name = "colorTextGrey">#6c7c6e</color>
     <color name="colorBackgroundDarker">#f7f7f7</color>
+    <color name = "colorLine">#1117483b</color>
+    <color name="gray_orange">#F3F2F7</color>
 
 </resources>

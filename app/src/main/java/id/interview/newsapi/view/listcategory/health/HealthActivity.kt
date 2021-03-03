@@ -1,5 +1,6 @@
 package id.interview.newsapi.view.listcategory.health
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,15 +15,13 @@ import id.interview.newsapi.support.*
 import id.interview.newsapi.view.home.modules.MoviesModels
 import id.interview.newsapi.view.home.modules.NewsAdapter
 import id.interview.newsapi.view.home.support.presenter.NewsPresenter
+import id.interview.newsapi.view.listcategory.ActivityDetailsNews
 import id.interview.newsapi.view.listcategory.support.CategoryAdapter
 import kotlinx.android.synthetic.main.activity_technology.*
 
 
-class HealthActivity : BaseActivity(), ViewNetworkState, IView {
+class HealthActivity : BaseActivity(), ViewNetworkState, IView, CategoryAdapter.onClickListener {
 
-    private val parent_view: View? = null
-    private var recyclerView: RecyclerView? = null
-    private var mAdapter: NewsAdapter? = null
     private var isRefresh = false
     private val presenter by lazy {
         NewsPresenter(
@@ -50,7 +49,7 @@ class HealthActivity : BaseActivity(), ViewNetworkState, IView {
 
     private fun initList(dataList: ArrayList<MoviesModels>) {
         val adapterCart = CategoryAdapter(
-            this, layoutInflater, dataList, R.layout.item_news_category
+            this, dataList
         )
         recycler_view_dummy?.apply {
             recycler_view_dummy?.layoutManager = LinearLayoutManager(context)
@@ -74,18 +73,8 @@ class HealthActivity : BaseActivity(), ViewNetworkState, IView {
         runOnUiThread {
             when (key) {
                 presenter.moviesListParam -> {
-                    if (isRefresh) {
-                        swipe_refresh_news_ku?.apply { if (status) show() else hide()
-                        }
-                    } else {
-                        if (status) {
-                            swipe_refresh_news_ku?.disable()
-                            recycler_view_dummy?.gone()
-                        } else {
-                            swipe_refresh_news_ku?.enable()
-                            recycler_view_dummy?.visible()
-                        }
-                    }
+                    recycler_view_dummy?.apply { if (status) gone() else visible() }
+                    shimmer_home?.apply { if (status) visible() else gone() }
                 }
             }
         }
@@ -111,6 +100,13 @@ class HealthActivity : BaseActivity(), ViewNetworkState, IView {
                 presenter.moviesListParam -> showToast(message.toString())
             }
         }
+    }
+
+    override fun onViewNews(index: Int) {
+        val cart = products[index]
+        val intent = Intent(this, ActivityDetailsNews::class.java)
+        intent.putExtra("data", cart)
+        startActivity(intent)
     }
 
 }
