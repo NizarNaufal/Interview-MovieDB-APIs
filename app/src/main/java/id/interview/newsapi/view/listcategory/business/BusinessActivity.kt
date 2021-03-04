@@ -3,6 +3,7 @@ package id.interview.newsapi.view.listcategory.business
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.interview.newsapi.R
 import id.interview.newsapi.repository.IView
@@ -39,6 +40,11 @@ class BusinessActivity : BaseActivity(), ViewNetworkState, IView,CategoryAdapter
             setOnRefreshListener { requestProduct(true) }
         }
         initToolbar()
+        searchtextnews?.addTextChangedListener{
+            val keyword = searchtextnews.text.toString()
+            val data = products.filter { it.title_news!!.contains(keyword, true)  }
+            initList(data as ArrayList<MoviesModels>)
+        }
 
     }
     override fun onSupportNavigateUp(): Boolean {

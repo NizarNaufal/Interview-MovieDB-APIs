@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.interview.newsapi.R
@@ -44,6 +45,11 @@ class HealthActivity : BaseActivity(), ViewNetworkState, IView, CategoryAdapter.
         swipe_refresh_news_ku?.apply {
             setColorSchemeResources(R.color.colorRed, R.color.pruple, R.color.colorRed)
             setOnRefreshListener { requestProduct(true) }
+        }
+        searchtextnews?.addTextChangedListener{
+            val keyword = searchtextnews.text.toString()
+            val data = products.filter { it.title_news!!.contains(keyword, true)  }
+            initList(data as ArrayList<MoviesModels>)
         }
     }
 
