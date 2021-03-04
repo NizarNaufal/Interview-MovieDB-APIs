@@ -33,5 +33,7 @@
     <string name="loca">Location :</string>
     <string name="details_article">Details Article</string>
     <string name="back">back</string>
+    <string name="readmore">Read More</string>
+    <string name="example">Donec sed tempus est, id bibendum felis. Sed volutpat nulla luctus nisi mollis.</string>
 
 </resources>

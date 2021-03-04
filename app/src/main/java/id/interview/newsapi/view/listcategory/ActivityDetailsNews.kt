@@ -10,6 +10,8 @@ import id.interview.newsapi.R
 import id.interview.newsapi.repository.IView
 import id.interview.newsapi.repository.ViewNetworkState
 import id.interview.newsapi.repository.base.BaseActivity
+import id.interview.newsapi.support.DateFormat
+import id.interview.newsapi.view.home.WebviewArticle
 import id.interview.newsapi.view.home.modules.MoviesModels
 import kotlinx.android.synthetic.main.activity_news_details.*
 import kotlinx.android.synthetic.main.include_news_details_content.*
@@ -50,7 +52,7 @@ class ActivityDetailsNews: BaseActivity(), ViewNetworkState, IView {
             .into(image_news_content)
         title_news_ku.text = data?.title_news
         content_news.text = data?.desc_news
-
+        date?.text = DateFormat(data?.publishedAt)
         btn_share?.setOnClickListener {
             try {
                 val i = Intent(Intent.ACTION_SEND)
@@ -63,6 +65,11 @@ class ActivityDetailsNews: BaseActivity(), ViewNetworkState, IView {
             } catch (e: Exception) {
                 Toast.makeText(this, "Sorry, \nCannot be share", Toast.LENGTH_SHORT).show()
             }
+        }
+        read_more?.setOnClickListener {
+            val intent = Intent(this, WebviewArticle::class.java)
+            intent.putExtra("url_parse", data?.url_image)
+            startActivity(intent)
         }
     }
 }

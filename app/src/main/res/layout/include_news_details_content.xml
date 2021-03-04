@@ -85,10 +85,22 @@
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginTop="@dimen/spacing_middle"
                 android:layout_marginRight="@dimen/spacing_large"
-                android:text="Donec sed tempus est, id bibendum felis. Sed volutpat nulla luctus nisi mollis."
+                android:text="@string/example"
                 android:textColor="@color/colorTextAction"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/read_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:layout_marginRight="@dimen/spacing_large"
+                android:text="@string/readmore"
+                android:gravity="center"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <View
